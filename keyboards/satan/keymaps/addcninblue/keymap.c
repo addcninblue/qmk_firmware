@@ -25,6 +25,7 @@ enum custom_keycodes {
 #include "dynamic_macro.h"
 
 static uint8_t old_layer = 0;
+/* static uint8_t old_backlight_level = 0; */
 
 // Fillers to make layering more clear
 #define ______ KC_TRNS
@@ -48,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_GESC , KC_1    , KC_2    , KC_3   , KC_4    , KC_5    , KC_6   , KC_7     , KC_8    , KC_9   , KC_0    , KC_MINS , KC_EQL   , KC_BSLS , KC_GRV , \
       KC_TAB  , KC_Q    , KC_W    , KC_E   , KC_R    , KC_T    , KC_Y   , KC_U     , KC_I    , KC_O   , KC_P    , KC_LBRC , KC_RBRC  , KC_BSPC , \
       KC_LCTL , KC_A    , KC_S    , KC_D   , KC_F    , KC_G    , KC_H   , KC_J     , KC_K    , KC_L   , KC_SCLN , KC_QUOT , KC_ENT   , \
-      KC_LSFT , KC_Z    , KC_X    , KC_C   , KC_V    , KC_B    , KC_N   , KC_M     , KC_COMM , KC_DOT , KC_SLSH , KC_RSFT , TO(_VIM) , \
+      KC_LSFT , KC_Z    , KC_X    , KC_C   , KC_V    , KC_B    , KC_N   , KC_M     , KC_COMM , KC_DOT , KC_SLSH , KC_RSFT , MO(_FN) , \
       ______  , MO(_FN) , KC_LALT , KC_SPC , KC_RALT , KC_RGUI , ______ , ______ \
       ),
 
@@ -58,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------------------------------------------------------------------------------------+
  * |  CAPS  | Vol-| Mute| Vol+|MAC+ |MAC  |MAC- | PgUp| Home|     |Print| Up  |     | Del    |
  * |-----------------------------------------------------------------------------------------+
- * |  Ctrl   | End |     | PgDn|     |     | Left| Down| Up  |Right| Left|Right|    Enter    |
+ * |  Ctrl   | End |     | PgDn| VIM |     | Left| Down| Up  |Right| Left|Right|    Enter    |
  * |-----------------------------------------------------------------------------------------+
  * |  Shift    | Prev| Play| Next| BL- | BL  | BL+ |     |     |     | Down| RShift    | DEF |
  * |-----------------------------------------------------------------------------------------+
@@ -68,8 +69,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FN] = KEYMAP_HHKB( /* Layer 2 */
       KC_GRAVE , KC_F1   , KC_F2   , KC_F3   , KC_F4          , KC_F5           , KC_F6        , KC_F7    , KC_F8   , KC_F9    , KC_F10  , KC_F11  , KC_F12       , KC_INS , KC_DEL , \
       KC_CAPS  , KC_VOLD , KC_MUTE , KC_VOLU , DYN_REC_START1 , DYN_MACRO_PLAY1 , DYN_REC_STOP , KC_PGUP  , KC_HOME , ______   , KC_PSCR , KC_UP   , ______       , KC_DEL , \
-      KC_LCTL  , KC_END  , ______  , KC_PGDN , ______         , ______          , KC_LEFT      , KC_DOWN  , KC_UP   , KC_RIGHT , KC_LEFT , KC_RGHT , KC_ENT       , \
-      KC_LSFT  , KC_MPRV , KC_MPLY , KC_MNXT , BL_DEC         , BL_TOGG         , BL_INC       , ______   , ______  , ______   , KC_DOWN , KC_RSFT , TO(_DEFAULT) , \
+      KC_LCTL  , KC_END  , ______  , KC_PGDN , TO(_VIM)       , ______          , KC_LEFT      , KC_DOWN  , KC_UP   , KC_RIGHT , KC_LEFT , KC_RGHT , KC_ENT       , \
+      KC_LSFT  , KC_MPRV , KC_MPLY , KC_MNXT , BL_DEC         , BL_TOGG         , BL_INC       , ______   , ______  , ______   , KC_DOWN , KC_RSFT , ______ , \
       ______   , ______  , KC_LALT , KC_SPC  , KC_RALT        , RESET           , ______       , ______ \
       ),
 
@@ -179,11 +180,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void matrix_scan_user(void) {
   uint8_t layer = biton32(layer_state);
 
+  /* if (old_layer != layer) { */
+  /*   if (old_layer == _VIM && layer == _DEFAULT){ */
+  /*       backlight_set(old_backlight_level); */
+  /*   } else if (old_layer != _VIM_SHIFT && old_layer != _VIM_CONTROL && layer == _VIM) { */
+  /*       old_backlight_level = get_backlight_level(); */
+  /*       backlight_set(4); */
+  /*   } */
+  /*   old_layer = layer; */
+  /* } */
+
   if (old_layer != layer) {
     switch (layer) {
       case _DEFAULT:
       case _FN:
-        backlight_set(1);
+        backlight_set(0);
       break;
       case _VIM:
       case _VIM_SHIFT:
@@ -193,4 +204,5 @@ void matrix_scan_user(void) {
     }
     old_layer = layer;
   }
+
 };
