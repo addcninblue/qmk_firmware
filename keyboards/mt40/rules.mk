@@ -1,13 +1,15 @@
 # MCU name
 MCU = atmega32a
-PROTOCOL = VUSB
 
-# unsupported features for now
-NO_UART = yes
-NO_SUSPEND_POWER_DOWN = yes
-
-# processor frequency
-F_CPU = 12000000
+# Bootloader selection
+#   Teensy       halfkay
+#   Pro Micro    caterina
+#   Atmel DFU    atmel-dfu
+#   LUFA DFU     lufa-dfu
+#   QMK DFU      qmk-dfu
+#   ATmega32A    bootloadHID
+#   ATmega328P   USBasp
+BOOTLOADER = bootloadHID
 
 # build options
 BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
@@ -21,16 +23,15 @@ MIDI_ENABLE ?= no       # MIDI controls
 AUDIO_ENABLE ?= no      # Audio output on port C6
 UNICODE_ENABLE ?= no    # Unicode
 BLUETOOTH_ENABLE ?= no  # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE ?= yes  # Enable WS2812 RGB underlight.  Do not enable this with audio at the same time.
-RGBLIGHT_CUSTOM_DRIVER = yes
+RGBLIGHT_ENABLE ?= yes  # Enable WS2812 RGB underlight. 
+WS2812_DRIVER = i2c
 TAP_DANCE_ENABLE = no
 
 OPT_DEFS = -DDEBUG_LEVEL=0
-OPT_DEFS += -DBOOTLOADER_SIZE=2048
 
 # custom matrix setup
 CUSTOM_MATRIX = yes
-SRC = matrix.c i2c.c
+SRC = matrix.c
 
-# programming options
-PROGRAM_CMD = ./keyboards/mt40/program $(TARGET).hex
+LAYOUTS = planck_mit
+LAYOUTS_HAS_RGB = no
