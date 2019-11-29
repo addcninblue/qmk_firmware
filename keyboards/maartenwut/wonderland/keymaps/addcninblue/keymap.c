@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_PGUP, KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC, \
  KC_PGDN, KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L,    KC_SCLN, KC_QUOT,          KC_ENT, \
           KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, KC_GRAVE, \
-          _______,            KC_LALT, MO(_FUNC2), KC_SPC,     MO(_FUNC),       KC_RALT,                   KC_RCTRL \
+          _______,            MO(_FUNC2), KC_LALT, KC_SPC,     MO(_FUNC),       KC_RALT,                   KC_RCTRL \
    ),
 [_FUNC] = LAYOUT(
  RGB_TOG, KC_GRAVE,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX, RESET, \
@@ -39,14 +39,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 RGB_RMOD, KC_LCTL, KC_END,  XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX, XXXXXXX, \
 /* RGB_RMOD, KC_LCTL, KC_END,  XXXXXXX, KC_PGDN, TO(_VIM), XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX, XXXXXXX, \ */
           KC_LSFT, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX, \
-          _______,          KC_LALT, _______, _______,          _______,                   KC_RALT,                            _______ \
+          _______,          _______, KC_LALT, _______,          _______,                   KC_RALT,                            _______ \
    ),
 [_FUNC2] = LAYOUT(
  RGB_TOG, VLK_TOG,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______, RESET, \
  RGB_MOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
 RGB_RMOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, \
           KC_LSFT, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX, \
-          _______,          KC_LALT, _______, _______,          _______,                   KC_RALT,                            _______ \
+          _______,          _______, KC_LALT, _______,          _______,                   KC_RALT,                            _______ \
    ),
 
 [_VIM] = LAYOUT(
@@ -54,7 +54,7 @@ RGB_RMOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
          XXXXXXX, XXXXXXX, XXXXXXX, KC_NEXT_WORD, KC_NEXT_WORD, XXXXXXX, XXXXXXX, KC_COPY, KC_UNDO, TO(_BASE), KC_ENTER, KC_PASTE, XXXXXXX, XXXXXXX, KC_DEL, \
 XXXXXXX, MO(_VIM_CONTROL), a_MACRO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX,   XXXXXXX, KC_ENTER, \
            MO(_VIM_SHIFT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PREV_WORD, KC_PREV_WORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,KC_RSFT, TO(_BASE), \
-          _______,          KC_LALT, _______, _______,          _______,                   KC_RALT,                            _______ \
+          _______,          _______, KC_LALT, _______,          _______,                   KC_RALT,                            _______ \
    ),
 
 [_VIM_SHIFT] = LAYOUT(
@@ -62,7 +62,7 @@ XXXXXXX, MO(_VIM_CONTROL), a_MACRO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT,
          XXXXXXX, XXXXXXX, XXXXXXX, KC_NEXT_WORD, KC_NEXT_WORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, I_MACRO, O_MACRO, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, \
 XXXXXXX, XXXXXXX, A_MACRO, XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX,   XXXXXXX, KC_ENTER, \
            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PREV_WORD, KC_PREV_WORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,KC_RSFT, TO(_BASE), \
-          _______,          KC_LALT, _______, _______,          _______,                   KC_RALT,                            _______ \
+          _______,          _______, KC_LALT, _______,          _______,                   KC_RALT,                            _______ \
    ),
 
 [_VIM_CONTROL] = LAYOUT(
@@ -70,7 +70,7 @@ XXXXXXX, XXXXXXX, A_MACRO, XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN,
          XXXXXXX, XXXXXXX, XXXXXXX, KC_NEXT_WORD, KC_NEXT_WORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, I_MACRO, O_MACRO, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL, \
 XXXXXXX, XXXXXXX, A_MACRO, XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX,   XXXXXXX, KC_ENTER, \
            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PREV_WORD, KC_PREV_WORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,KC_RSFT, TO(_BASE), \
-          _______,          KC_LALT, _______, _______,          _______,                   KC_RALT,                            _______ \
+          _______,          _______, KC_LALT, _______,          _______,                   KC_RALT,                            _______ \
    )
 };
 
